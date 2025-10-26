@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Juegos </title>
+  <style>
+    body {
+      background: linear-gradient(to bottom right, #f3eafc, #e0d4f7);
+      font-family: 'Georgia', serif;
+      color: #3D0642;
+      text-align: center;
+      padding: 50px;
+    }
+
+    h1 {
+      font-size: 2.8em;
+      margin-bottom: 20px;
+    }
+
+    .juego {
+      background-color: rgba(255, 255, 255, 0.85);
+      padding: 30px;
+      border-radius: 15px;
+      box-shadow: 0 0 15px rgba(122, 92, 158, 0.2);
+      margin-bottom: 40px;
+      max-width: 700px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    select, button {
+      padding: 10px;
+      font-size: 1em;
+      margin-top: 10px;
+      border-radius: 8px;
+      border: 2px solid #7A5C9E;
+      background-color: #fff;
+      color: #3D0642;
+    }
+
+    button:hover {
+      background-color: #e0d4f7;
+      cursor: pointer;
+    }
+
+    .resultado {
+      font-weight: bold;
+      margin-top: 15px;
+      font-size: 1.2em;
+    }
+
+    .michi-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 15px;
+      margin-top: 20px;
+    }
+
+    .michi-grid button {
+      padding: 30px;
+      border-radius: 10px;
+      background-color: #f9f6ff;
+      border: 2px solid #7A5C9E;
+      font-size: 1.1em;
+      transition: transform 0.3s ease;
+    }
+
+    .michi-grid button:hover {
+      transform: scale(1.05);
+      background-color: #e0d4f7;
+    }
+
+    .volver {
+      display: block;
+      margin-top: 40px;
+      padding: 10px 20px;
+      background-color: #7A5C9E;
+      color: white;
+      border-radius: 10px;
+      text-decoration: none;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <h1>Juegos para mi gamer fav </h1>
+
+  <div class="juego">
+    <h2>Trivia: ¿Cuánto me conoces?</h2>
+
+    <p>¿Cuáles son mis flores favoritas?</p>
+    <select id="flores">
+      <option value="">Selecciona una opción</option>
+      <option value="Gardenias">Gardenias</option>
+      <option value="Hortensias">Hortensias</option>
+      <option value="Lirios">Lirios</option>
+      <option value="Gerberas">Gerbera</option>
+      <option value="todas">Todas</option>
+      <option value="Ninguna">Ninguna</option>
+    </select>
+
+    <p>¿Cuál es mi color favorito?</p>
+    <select id="color">
+      <option value="">Selecciona una opción</option>
+      <option value="Verde">Verde</option>
+      <option value="azul">Azul</option>
+      <option value="Negro">Negro</option>
+      <option value="Rojo">Rojo</option>
+    </select>
+
+    <p>¿Desde cuándo tengo a Fénix conmigo?</p>
+    <select id="fenix">
+      <option value="">Selecciona una opción</option>
+      <option value="kinder">Desde kinder</option>
+      <option value="primaria">Desde 2° de primaria</option>
+      <option value="nunca">Nunca te dije</option>
+    </select>
+
+    <br>
+    <button onclick="verificarTrivia()">Verificar respuestas</button>
+    <p class="resultado" id="resultadoTrivia"></p>
+  </div>
+
+  <div class="juego">
+    <h2>Encuentra al michi </h2>
+    <p>Uno de estos botones esconde al michi con corazón. ¿Dónde está?</p>
+    <div class="michi-grid">
+      <button onclick="michi(false)">🌼</button>
+      <button onclick="michi(false)">🌸</button>
+      <button onclick="michi(true)">🐱</button>
+      <button onclick="michi(false)">🌻</button>
+      <button onclick="michi(false)">🌷</button>
+      <button onclick="michi(false)">🌹</button>
+    </div>
+    <p class="resultado" id="resultadoMichi"></p>
+  </div>
+
+  <a href="index.html" class="volver">Volver al menú</a>
+
+  <script>
+    function verificarTrivia() {
+      const flores = document.getElementById("flores").value;
+      const color = document.getElementById("color").value;
+      const fenix = document.getElementById("fenix").value;
+      const resultado = document.getElementById("resultadoTrivia");
+
+      if (flores === "todas" && color === "azul" && fenix === "kinder") {
+        resultado.textContent = "Muy bien amor!!";
+      } else {
+        resultado.textContent = "Mmm...no bot";
+      }
+    }
+
+    function michi(correcto) {
+      const resultado = document.getElementById("resultadoMichi");
+      if (correcto) {
+        resultado.textContent = "Que fácil amor";
+      } else {
+        resultado.textContent = "Estas bien bot";
+      }
+    }
+  </script>
+</body>
+</html>
+
